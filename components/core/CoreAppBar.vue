@@ -1,5 +1,4 @@
 <template>
-  <CoreDrawer />
   <v-app-bar color="primary">
     <v-icon :icon="icon" color="white" class="ml-6" />
     <v-app-bar-title class="text-white">
