@@ -1,0 +1,40 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`BaseAlert > should render with default props 1`] = `
+<div
+  class="v-alert v-theme--light bg-info v-alert--density-default v-alert--variant-flat"
+  data-test="BaseAlert"
+  role="alert"
+>
+  
+  <!---->
+  <span
+    class="v-alert__underlay"
+  />
+  
+  <!---->
+  <div
+    class="v-alert__prepend"
+  >
+    <i
+      aria-hidden="true"
+      class="mdi-information mdi v-icon notranslate v-theme--light"
+      density="default"
+      style="font-size: 28px; height: 28px; width: 28px;"
+    />
+  </div>
+  <div
+    class="v-alert__content"
+  >
+    <div
+      class="v-alert-title"
+    >
+      Test title
+    </div>
+    Test text
+    <!---->
+  </div>
+  <!---->
+  <!---->
+</div>
+`;

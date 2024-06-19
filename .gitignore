@@ -1,0 +1,21 @@
+node_modules
+*.log*
+.nuxt
+.nitro
+.cache
+.output
+.env
+dist
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode
+
+# vitest c8 code coverage
+coverage
+
+# tests
+tests/cypress/videos
+tests/cypress/screenshots

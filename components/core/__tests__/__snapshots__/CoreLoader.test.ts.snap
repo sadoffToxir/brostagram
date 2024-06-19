@@ -1,0 +1,40 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CoreLoader > should render with isLoading: true 1`] = `
+<div
+  aria-valuemax="100"
+  aria-valuemin="0"
+  class="v-progress-circular v-progress-circular--indeterminate v-theme--light text-primary"
+  data-test="CoreLoader"
+  role="progressbar"
+  style="width: 64px; height: 64px;"
+>
+  <svg
+    style="transform: rotate(calc(-90deg + 0deg));"
+    viewBox="0 0 42.666666666666664 42.666666666666664"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <circle
+      class="v-progress-circular__underlay"
+      cx="50%"
+      cy="50%"
+      fill="transparent"
+      r="20"
+      stroke-dasharray="125.66370614359172"
+      stroke-dashoffset="0"
+      stroke-width="2.6666666666666665"
+    />
+    <circle
+      class="v-progress-circular__overlay"
+      cx="50%"
+      cy="50%"
+      fill="transparent"
+      r="20"
+      stroke-dasharray="125.66370614359172"
+      stroke-dashoffset="125.66370614359172px"
+      stroke-width="2.6666666666666665"
+    />
+  </svg>
+  <!---->
+</div>
+`;

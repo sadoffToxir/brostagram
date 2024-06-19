@@ -1,0 +1,66 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CoreSnackbar > should render with show: true 1`] = `
+<div
+  class="v-overlay v-overlay--active v-theme--light v-locale--is-ltr v-snackbar v-snackbar--active v-snackbar--sticky"
+  data-test="CoreSnackbar"
+  right=""
+  style="z-index: 2000;"
+>
+  <transition-stub
+    appear="true"
+    css="true"
+    name="fade-transition"
+    persisted="false"
+  >
+    <!---->
+  </transition-stub>
+  <transition-stub
+    appear="true"
+    css="true"
+    name="v-snackbar-transition"
+    persisted="true"
+  >
+    <div
+      class="v-overlay__content v-snackbar__wrapper v-theme--light v-snackbar--variant-elevated"
+      style="bottom: 0px; right: 0px;"
+    >
+      
+      
+      <!---->
+      <span
+        class="v-snackbar__underlay"
+      />
+      
+      <div
+        aria-live="polite"
+        class="v-snackbar__content"
+        role="status"
+      >
+        
+        <div
+          class="d-flex align-center"
+          style="cursor: pointer;"
+        >
+           
+          <i
+            aria-hidden="true"
+            class="v-icon notranslate v-theme--light pl-3"
+            data-test="CoreSnackbar-icon"
+            style="font-size: 18px; height: 18px; width: 18px;"
+          >
+            
+            
+            
+            
+            
+          </i>
+        </div>
+        
+      </div>
+      <!---->
+      
+    </div>
+  </transition-stub>
+</div>
+`;

@@ -1,0 +1,9 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`BaseDatePicker > can select date 1`] = `
+[
+  [
+    "2023-08-15",
+  ],
+]
+`;
