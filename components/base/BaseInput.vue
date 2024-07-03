@@ -5,6 +5,8 @@
     :hide-details="hideDetails"
     :readonly="readonly"
     :max-errors="maxErrors"
+    variant="outlined"
+    :type="type"
     @update:model-value="handleUpdate"
   />
 </template>

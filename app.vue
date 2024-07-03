@@ -17,18 +17,18 @@
 
 <script setup lang="ts">
 useHead({
-  titleTemplate: (titleChunk) => {
-    if (!titleChunk) {
-      return 'Brostagram'
-    }
+	titleTemplate: (titleChunk) => {
+		if (!titleChunk) {
+			return 'Brostagram'
+		}
 
-    const env = useRuntimeConfig().public.environment
+		const env = useRuntimeConfig().public.environment
 
-    if (env === 'production') {
-      return titleChunk
-    }
+		if (env === 'production') {
+			return titleChunk
+		}
 
-    return `${titleChunk} - ${env[0].toUpperCase() + env.slice(1)}`
-  }
+		return `${titleChunk} - ${env[0].toUpperCase() + env.slice(1)}`
+	}
 })
 </script>

@@ -64,6 +64,6 @@
     "@vueuse/components": "^10.5.0",
     "@vueuse/core": "^10.5.0",
     "pinia": "^2.1.7",
-    "vuetify": "^3.3.22"
+    "vuetify": "^3.6.10"
   }
 }

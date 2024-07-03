@@ -27,15 +27,15 @@ const AD_BLOCK_DETECTION_URL = 'https://securepubads.g.doubleclick.net/pagead/pp
 const adBlockEnabled = ref(false)
 
 const detectAdBlock = async () => {
-  const { data, error } = await useFetch<AdBlockDetectionResponse, AdBlockDetectionError>(AD_BLOCK_DETECTION_URL, {
-    onResponse ({ request, response, options }) {
-      adBlockEnabled.value = response.url !== AD_BLOCK_DETECTION_URL
-    }
-  })
+	const { data, error } = await useFetch<AdBlockDetectionResponse, AdBlockDetectionError>(AD_BLOCK_DETECTION_URL, {
+		onResponse ({ request, response, options }) {
+			adBlockEnabled.value = response.url !== AD_BLOCK_DETECTION_URL
+		}
+	})
 
-  if (error.value?.name === 'FetchError') {
-    adBlockEnabled.value = true
-  }
+	if (error.value?.name === 'FetchError') {
+		adBlockEnabled.value = true
+	}
 }
 
 onBeforeMount(async () => await detectAdBlock())

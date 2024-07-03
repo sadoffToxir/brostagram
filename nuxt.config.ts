@@ -3,65 +3,66 @@ import { pinia } from './config/pinia'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  ssr: false,
+	ssr: false,
 
-  typescript: {
-    strict: true,
-    shim: false
-  },
+	typescript: {
+		strict: true,
+		shim: false
+	},
 
-  css: [
-    'vuetify/styles'
-  ],
+	css: [
+		'vuetify/styles'
+	],
 
-  vite: {
-    ssr: {
-      noExternal: ['vuetify']
-    }
-  },
+	vite: {
+		ssr: {
+			noExternal: ['vuetify']
+		}
+	},
 
-  build: {
-    transpile: ['vuetify']
-  },
+	build: {
+		transpile: ['vuetify']
+	},
 
-  modules: [
-    'nuxt-lodash',
-    '@pinia/nuxt',
-    (_options, nuxt) => {
-      nuxt.hooks.hook('vite:extendConfig', (config) => {
-        // @ts-expect-error
-        config.plugins.push(vuetify({ autoImport: true }))
-      })
-    },
-    '@vueuse/nuxt'
-  ],
+	modules: [
+		'nuxt-lodash',
+		'@pinia/nuxt',
+		(_options, nuxt) => {
+			nuxt.hooks.hook('vite:extendConfig', (config) => {
+				// @ts-expect-error
+				config.plugins.push(vuetify({ autoImport: true }))
+			})
+		},
+		'@vueuse/nuxt'
+	],
 
-  plugins: [
-    '~/plugins/vuetify/vuetify.ts',
-    '~/plugins/api/api.ts',
-    '~/plugins/vuedatepicker.ts'
-  ],
+	plugins: [
+		'~/plugins/vuetify/vuetify.client.ts',
+		'~/plugins/api/api.ts',
+		'~/plugins/vuedatepicker.ts'
+	],
 
-  runtimeConfig: {
-    public: {
-      environment: ''
-    }
-  },
+	runtimeConfig: {
+		public: {
+			environment: '',
+			apiUrl: ''
+		}
+	},
 
-  app: {
-    head: {
-      charset: 'utf-8',
-      viewport: 'width=device-width, initial-scale=1',
-      title: 'Brostagram',
-      meta: [
-        { name: 'description', content: 'Brostagram' }
-      ]
-    }
-  },
+	app: {
+		head: {
+			charset: 'utf-8',
+			viewport: 'width=device-width, initial-scale=1',
+			title: 'Brostagram',
+			meta: [
+				{ name: 'description', content: 'Brostagram' }
+			]
+		}
+	},
 
-  imports: {
-    dirs: ['stores']
-  },
+	imports: {
+		dirs: ['stores']
+	},
 
-  pinia
+	pinia
 })

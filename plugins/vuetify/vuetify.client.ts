@@ -4,7 +4,7 @@ import { createVuetify } from 'vuetify'
 import config from './config'
 
 export default defineNuxtPlugin((nuxtApp) => {
-  const vuetify = createVuetify(config)
+	const vuetify = createVuetify(config)
 
-  nuxtApp.vueApp.use(vuetify)
+	nuxtApp.vueApp.use(vuetify)
 })

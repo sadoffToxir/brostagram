@@ -1,28 +1,35 @@
 <template>
   <v-snackbar
-    :model-value="storeSnackbar.snackbar.show"
+    :model-value="snackbarStore.snackbar.show"
     right
-    :color="storeSnackbar.snackbar.color"
+    :color="snackbarStore.snackbar.color"
     position="sticky"
     location="bottom right"
-    timeout="4000"
-    close-on-content-click
-    :data-test="componentTag"
+    :timeout="snackbarStore.snackbar.timeout"
+    :data-test="componentName"
   >
     <div
       class="d-flex align-center"
       style="cursor: pointer;"
     >
-      {{ storeSnackbar.snackbar.text }}
-      <v-icon class="pl-3" size="18" :data-test="`${componentTag}-icon`">
-        {{ storeSnackbar.snackbar.icon }}
+      <v-icon class="pl-3 mr-5" size="18" :data-test="`${componentName}-icon`">
+        {{ snackbarStore.snackbar.icon }}
       </v-icon>
+      <div v-if="Array.isArray(snackbarStore.snackbar.text)">
+        <ul class="px-4">
+          <li v-for="text in snackbarStore.snackbar.text" :key="text">
+            {{ text }}
+          </li>
+        </ul>
+      </div>
+      <div v-else>
+        {{ snackbarStore.snackbar.text }}
+      </div>
     </div>
   </v-snackbar>
 </template>
 
 <script setup lang="ts">
-
-const componentTag = 'CoreSnackbar'
-const storeSnackbar = useSnackbar()
+const componentName = getCurrentInstance()?.type.__name
+const snackbarStore = useSnackbar()
 </script>

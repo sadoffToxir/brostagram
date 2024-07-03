@@ -1,19 +1,27 @@
-import { Cookie } from '@/types/Cookie'
+import type { Cookie } from '~/types/Cookie'
+import { AUTH_ACCESS_COOKIE } from '~/config/const'
 
-type FetchRequest = string | Request | Ref<string | Request> | (() => string) | Request
 type FetchOptions = any // improve type
 
-// export const useApi = <T>(url: FetchRequest, opts?: FetchOptions) => {
-//   const { apiBase, environment } = useRuntimeConfig().public
+export const useApi = async (url: string, options?: FetchOptions) => {
+	const { apiUrl } = useRuntimeConfig().public
+	const { headers, ...opts } = options
+	const apiHeaders = {
+		...opts.headers,
+		Authorization: `Bearer ${useCookie<Cookie>(AUTH_ACCESS_COOKIE).value?.token}`
+	}
+	try {
+		return await $fetch(url, {
+			baseURL: apiUrl,
+			headers: apiHeaders,
+			server: !!opts.server,
+			...opts
+		})
+	} catch (error: any) {
+		if (error.response) {
+			return error.response._data
+		}
 
-//   const { BAXTER_AUTH_ACCESS_COOKIE, BAXTER_AUTH_ID_COOKIE } = getBaxterAuthCookies(environment)
-
-//   return useFetch<T>(url, {
-//     baseURL: apiBase,
-//     headers: {
-//       Authorization: `Bearer ${useCookie<Cookie>(BAXTER_AUTH_ACCESS_COOKIE).value?.token}`,
-//       Identity: useCookie<Cookie>(BAXTER_AUTH_ID_COOKIE).value?.token
-//     },
-//     ...opts
-//   })
-// }
+		return error
+	}
+}
