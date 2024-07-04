@@ -15,6 +15,10 @@
       :append-icon="showPassword ? 'mdi-eye-off-outline' : 'mdi-eye-outline'"
       @click:append="showPassword = !showPassword"
     />
+    <v-checkbox
+      v-model="loginForm.remember"
+      label="Remember me"
+    />
     <BaseButton @click="handleSubmit">
       Login
     </BaseButton>
@@ -27,9 +31,10 @@ const { isError, handleInputError, handleErrorSnackbar } = useErrorHandler()
 const { setSnackbarError, setSnackbarSuccess } = useSnackbar()
 const { handleLogin } = useAuth()
 
-const loginForm = ref<Record<string, string>>({
+const loginForm = ref<Record<string, string | boolean>>({
 	email: '',
-	password: ''
+	password: '',
+	remember: true
 })
 
 const showPassword = ref(false)
@@ -38,14 +43,14 @@ const errors = ref<Record<string, string> | null>(null)
 
 const handleSubmit = async () => {
 	errors.value = null
-
-	const response = await $api.signIn(loginForm.value)
+	const { remember, ...loginData } = loginForm.value
+	const response = await $api.signIn(loginData)
 
 	if (isError(response)) {
 		errors.value = handleInputError(response)
 		setSnackbarError({ text: handleErrorSnackbar(response) })
 	} else {
-		handleLogin(response)
+		handleLogin(response, remember as boolean)
 		setSnackbarSuccess({ text: response.message })
 	}
 }

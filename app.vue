@@ -31,4 +31,13 @@ useHead({
 		return `${titleChunk} - ${env[0].toUpperCase() + env.slice(1)}`
 	}
 })
+const { onInterval, removeInterval } = useAuth()
+
+onBeforeMount(() => {
+	onInterval()
+})
+
+onUnmounted(() => {
+	removeInterval()
+})
 </script>

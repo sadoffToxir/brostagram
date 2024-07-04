@@ -16,7 +16,32 @@ async function signIn (form: Record<string, string>, ...restParams: Array<object
 	})
 }
 
+async function getAccessToken (refreshToken: string, ...restParams: Array<object>): Promise<unknown> {
+	return await useApi(`${getPath()}/access-token`, {
+		method: 'POST',
+		body: { refreshToken },
+		...restParams
+	})
+}
+
+async function getProfile (userId: string, ...restParams: Array<object>): Promise<unknown> {
+	return await useApi(`${getPath()}/${userId}`, {
+		...restParams
+	})
+}
+
+async function updateProfile (userId: string, form: Record<string, string>, ...restParams: Array<object>): Promise<unknown> {
+	return await useApi(`${getPath()}/${userId}`, {
+		method: 'PUT',
+		body: form,
+		...restParams
+	})
+}
+
 export default {
 	signUp,
-	signIn
+	signIn,
+	getAccessToken,
+	getProfile,
+	updateProfile
 }
