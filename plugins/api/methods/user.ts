@@ -24,7 +24,7 @@ async function getAccessToken (refreshToken: string, ...restParams: Array<object
 	})
 }
 
-async function getProfile (userId: string, ...restParams: Array<object>): Promise<unknown> {
+async function getProfile (userId: string = '', ...restParams: Array<object>): Promise<unknown> {
 	return await useApi(`${getPath()}/${userId}`, {
 		...restParams
 	})

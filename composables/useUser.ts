@@ -1,24 +1,16 @@
+import type { User } from '~/types/User'
+
 export default function useUser () {
-	const state = useState('userState', () => ({
-		userId: '',
-		profile: {}
-	}))
+	const state = useState<User | null>('userState', () => null)
 
-	const profile = computed(()	=> state.value.profile)
-	const userId = computed(()	=> state.value.userId)
+	const profile = computed(()	=> state.value)
 
-	const setProfile = (profile: Record<string, string>) => {
-		state.value.profile = profile
-	}
-
-	const setUserId = (userId: string) => {
-		state.value.userId = userId
+	const setProfile = (profile: User) => {
+		state.value = profile
 	}
 
 	return {
 		profile,
-		userId,
-		setProfile,
-		setUserId
+		setProfile
 	}
 }

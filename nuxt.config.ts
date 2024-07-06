@@ -24,6 +24,11 @@ export default defineNuxtConfig({
 		transpile: ['vuetify']
 	},
 
+	lodash: {
+		prefix: 'use',
+		prefixSkip: false
+	},
+
 	modules: [
 		'nuxt-lodash',
 		'@pinia/nuxt',
@@ -39,7 +44,8 @@ export default defineNuxtConfig({
 	plugins: [
 		'~/plugins/vuetify/vuetify.client.ts',
 		'~/plugins/api/api.ts',
-		'~/plugins/vuedatepicker.ts'
+		'~/plugins/vuedatepicker.ts',
+		'~/plugins/filereader.client.ts'
 	],
 
 	runtimeConfig: {

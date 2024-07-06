@@ -4,18 +4,19 @@ import type { Cookie, AuthLoginResponse } from '~/types/Cookie'
 export const useAuth = () => {
 	const interval = ref<ReturnType<typeof setInterval> | null>(null)
 
-	const handleLogin = (data: AuthLoginResponse, remember: boolean = false) => {
+	const handleLogin = async (data: AuthLoginResponse, remember: boolean = false) => {
 		const refreshToken = useCookie<Cookie>(AUTH_REFRESH_COOKIE).value || data.refreshToken
 
 		if (data.accessToken && refreshToken) {
-			const { setUserId } = useUser()
+			const { $api } = useNuxtApp()
+			const { setProfile } = useUser()
+			const profile = await $api.getProfile()
+			setProfile(profile)
 
 			useCookie<Cookie>(AUTH_ACCESS_COOKIE).value = {
 				token: data.accessToken,
 				expiryDate: new Date(data.accessTokenExpiresIn)
 			}
-
-			setUserId(data.userId)
 
 			if (remember) {
 				useCookie<Cookie>(AUTH_REFRESH_COOKIE).value = {
@@ -24,7 +25,7 @@ export const useAuth = () => {
 				}
 			}
 
-			navigateTo('/account')
+			navigateTo('/profile')
 		}
 	}
 

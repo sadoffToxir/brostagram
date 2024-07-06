@@ -25,10 +25,10 @@ interface Emits {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  hideDetails: 'auto',
-  clearable: true,
-  maxErrors: 5,
-  type: 'text'
+	hideDetails: 'auto',
+	clearable: true,
+	maxErrors: 5,
+	type: 'text'
 })
 
 const emits = defineEmits<Emits>()
@@ -36,10 +36,10 @@ const emits = defineEmits<Emits>()
 const componentTag = 'BaseInput'
 
 const handleUpdate = (input: string | number | null): void => {
-  const value = input === null
-    ? props.type === 'number' ? 0 : ''
-    : input
-  emits('update:model-value', value)
+	const value = input === null
+		? props.type === 'number' ? 0 : ''
+		: input
+	emits('update:model-value', value)
 }
 </script>
 

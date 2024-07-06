@@ -38,7 +38,7 @@ onBeforeMount(() => {
 	const accessCookie = useCookie<Cookie>(AUTH_ACCESS_COOKIE)
 
 	if (accessCookie.value) {
-		navigateTo('/account')
+		navigateTo('/profile')
 	}
 })
 </script>

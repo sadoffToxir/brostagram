@@ -62,6 +62,12 @@ const handleSubmit = async () => {
 		setSnackbarError({ text: handleErrorSnackbar(response) })
 	} else {
 		setSnackbarSuccess({ text: response.message })
+		registerForm.value = {
+			username: '',
+			email: '',
+			password: '',
+			confirmPassword: ''
+		}
 	}
 }
 </script>
