@@ -15,7 +15,7 @@ module.exports = {
 		'vue/no-deprecated-slot-attribute': 'off',
 		'vue/valid-v-slot': 'off',
 		'vue/no-multiple-template-root': 'off',
-		indent: ['error', 'tab'],
+		indent: ['error', 'tab', { SwitchCase: 1 }],
 		'no-tabs': 'off',
 		'testing-library/no-node-access': 'off'
 	},

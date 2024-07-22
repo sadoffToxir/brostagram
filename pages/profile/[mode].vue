@@ -7,7 +7,6 @@
             <h2>Edit Profile</h2>
           </v-col>
         </v-row>
-
         <div class="profileEdit-imageUpload">
           <v-row>
             <v-col class="d-flex justify-center">

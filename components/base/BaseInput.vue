@@ -8,7 +8,14 @@
     variant="outlined"
     :type="type"
     @update:model-value="handleUpdate"
-  />
+  >
+    <template
+      v-if="$slots['append-inner']"
+      #append-inner="slotProps"
+    >
+      <slot name="append-inner" :slot-props="slotProps" />
+    </template>
+  </v-text-field>
 </template>
 
 <script setup lang="ts">

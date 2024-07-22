@@ -3,16 +3,7 @@
     <v-card width="800">
       <v-card-text class="d-flex justify-space-between">
         <div class="profile-content">
-          <div>
-            <img
-              v-if="profile?.profileImage"
-              :src="profile?.profileImage"
-              width="150"
-              height="150"
-              class="profile-image"
-            >
-            <BaseEmptyAvatar v-else size="150" />
-          </div>
+          <BaseProfileImage :image="profile?.profileImage" size="150" />
           <div class="mt-4">
             <h2>{{ profile?.username }}</h2>
             <p class="pt-1">
@@ -63,8 +54,5 @@ onBeforeMount(async () => {
     gap: 20px;
   }
 
-  &-image {
-    border-radius: 50%;
-  }
 }
 </style>

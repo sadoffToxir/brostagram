@@ -7,8 +7,7 @@
       type="email"
     />
     <BaseInput
-      v-model="
-        loginForm.password"
+      v-model="loginForm.password"
       label="Password"
       :type="showPassword ? 'text' : 'password'"
       :error-messages="errors?.password"
@@ -36,9 +35,7 @@ const loginForm = ref<Record<string, string | boolean>>({
 	password: '',
 	remember: true
 })
-
 const showPassword = ref(false)
-
 const errors = ref<Record<string, string> | null>(null)
 
 const handleSubmit = async () => {

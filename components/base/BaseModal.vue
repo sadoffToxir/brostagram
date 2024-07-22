@@ -84,10 +84,10 @@ interface Props {
 }
 
 withDefaults(defineProps<Props>(), {
-  showCancelBtn: true,
-  showSaveBtn: true,
-  saveBtnDisabled: false,
-  maxWidth: DialogWidth.large
+	showCancelBtn: true,
+	showSaveBtn: true,
+	saveBtnDisabled: false,
+	maxWidth: DialogWidth.large
 })
 
 interface Emits {
