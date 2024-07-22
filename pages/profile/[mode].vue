@@ -59,6 +59,9 @@
         <v-row>
           <v-col class="d-flex justify-end">
             <div>
+              <v-btn variant="text" class="mt-4" @click="handleCancel">
+                Cancel
+              </v-btn>
               <BaseButton class="mt-4" @click="handleSubmit">
                 Save changes
               </BaseButton>
@@ -97,6 +100,10 @@ const handleImageUploadErrors = (val: string) => {
 
 const convertMbToKb = (mb: number) => {
 	return mb * 1024
+}
+
+const handleCancel = () => {
+	navigateTo('/profile')
 }
 
 const handleSubmit = async () => {

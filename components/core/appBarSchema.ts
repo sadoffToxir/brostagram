@@ -4,6 +4,12 @@ export default {
 	icon: 'mdi-dumbbell',
 	menuItems: [
 		{
+			title: 'Profile',
+			icon: 'mdi-account',
+			id: 'profile',
+			to: '/profile'
+		},
+		{
 			title: 'Logout',
 			icon: 'mdi-logout',
 			id: 'logout',

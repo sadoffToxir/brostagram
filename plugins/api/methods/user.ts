@@ -24,6 +24,13 @@ async function getAccessToken (refreshToken: string, ...restParams: Array<object
 	})
 }
 
+async function getUsers (search: string, ...restParams: Array<object>): Promise<unknown> {
+	return await useApi(`${getPath()}/search?username=${search}`, {
+		method: 'GET',
+		...restParams
+	})
+}
+
 async function getProfile (userId: string = '', ...restParams: Array<object>): Promise<unknown> {
 	return await useApi(`${getPath()}/${userId}`, {
 		...restParams
@@ -43,5 +50,6 @@ export default {
 	signIn,
 	getAccessToken,
 	getProfile,
-	updateProfile
+	updateProfile,
+	getUsers
 }

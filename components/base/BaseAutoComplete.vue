@@ -5,7 +5,11 @@
     :variant="variant"
     :error-messages="errorMessages"
     @update:search="searchInput = $event"
-  />
+  >
+    <template v-if="$slots['item']" #item="{ item }">
+      <slot name="item" :item="item" />
+    </template>
+  </v-autocomplete>
 </template>
 
 <script setup lang="ts">

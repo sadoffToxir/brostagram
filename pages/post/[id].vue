@@ -2,7 +2,7 @@
   <div class="d-flex justify-center">
     <v-card flat>
       <v-card-text class="d-flex justify-space-between">
-        <PostCardDetailed :post="post!" />
+        <PostCard v-if="post" :post="post" detailed	@refetch-post="refetchPost" />
       </v-card-text>
     </v-card>
   </div>
@@ -16,6 +16,14 @@ const route = useRoute()
 const { setProfile, profile } = useUser()
 
 const post = ref<Post | null>(null)
+
+const refetchPost = async () => {
+	const id = route.params.id
+
+	const postResponse = await $api.getPostById(id)
+
+	post.value = postResponse
+}
 
 onBeforeMount(async () => {
 	if (!profile.value) {

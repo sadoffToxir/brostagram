@@ -46,6 +46,5 @@ onBeforeMount(async () => {
 	if (!isError(postsResponse)) {
 		posts.value = postsResponse
 	}
-	console.log('posts', posts)
 })
 </script>

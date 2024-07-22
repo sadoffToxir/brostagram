@@ -57,6 +57,7 @@ const isPostLiked = computed(() => props.likes.includes(profile.value!.userId!))
 
 const postComment = () => {
 	emits('postComment', commentInput.value)
+	commentInput.value = ''
 }
 
 const postLike = () => {
