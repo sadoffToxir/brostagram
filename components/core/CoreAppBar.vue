@@ -9,6 +9,7 @@
       <v-spacer />
       <v-toolbar-items class="coreAppBar__list">
         <BaseAutoComplete
+          v-if="profile"
           v-model="searchInput"
           item-title="username"
           item-value="id"
@@ -33,19 +34,20 @@
             </v-list-item-title>
           </template>
         </BaseAutoComplete>
-        <v-btn
-          v-for="item in menuItems"
-          :id="item.id"
-          :key="item.id"
-          :title="item.title"
-          :to="item.to"
-          icon
-          color="white"
-        >
-          <v-icon>
-            {{ item.icon }}
-          </v-icon>
-        </v-btn>
+        <template v-for="item in menuItems" :key="item.id">
+          <v-btn
+            v-if="profile"
+            :id="item.id"
+            :title="item.title"
+            :to="item.to"
+            icon
+            color="white"
+          >
+            <v-icon>
+              {{ item.icon }}
+            </v-icon>
+          </v-btn>
+        </template>
       </v-toolbar-items>
     </div>
   </v-app-bar>
@@ -59,6 +61,8 @@ const { $api } = useNuxtApp()
 const { title, icon, menuItems } = appBarSchema
 const searchInput = ref('')
 const searchUserList = ref([])
+const { profile } = useUser()
+
 const { isError } = useErrorHandler()
 
 const searchUser = async (value: string) => {

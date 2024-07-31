@@ -5,7 +5,7 @@ export default function useUser () {
 
 	const profile = computed(()	=> state.value)
 
-	const setProfile = (profile: User) => {
+	const setProfile = (profile: User | null) => {
 		state.value = profile
 	}
 

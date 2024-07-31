@@ -2,7 +2,7 @@
   <div class="profile">
     <v-card width="800">
       <v-card-text class="d-flex justify-space-between">
-        <div class="profile-content">
+        <div class="profile__content">
           <BaseProfileImage :image="currentProfile?.profileImage" size="150" />
           <div class="mt-4">
             <div class="d-flex">
@@ -37,6 +37,14 @@
         </div>
       </v-card-text>
     </v-card>
+    <v-card class="mt-4" width="600">
+      <v-card-text>
+        <PostFeed v-if="posts.length > 0" :posts="posts" @refetch-posts="fetchPosts" />
+        <v-alert v-else>
+          No posts published yet
+        </v-alert>
+      </v-card-text>
+    </v-card>
   </div>
 </template>
 
@@ -50,6 +58,7 @@ const { isError, handleErrorSnackbar } = useErrorHandler()
 const { setSnackbarError } = useSnackbar()
 
 const currentProfile = ref<User | null>(null)
+const posts = ref([])
 
 const isProfileOwner = computed(() => {
 	return profile.value?.userId && currentProfile.value?.userId && profile.value.userId === currentProfile.value?.userId
@@ -82,7 +91,6 @@ const handleFollowing = () => {
 }
 
 const followUser = async () => {
-	console.log('userId', currentProfile.value?.userId)
 	const response = await $api.followUser(currentProfile.value?.userId)
 
 	if (isError(response)) {
@@ -102,8 +110,19 @@ const unfollowUser = async () => {
 	}
 }
 
+const fetchPosts = async () => {
+	const response = await $api.getUserPosts(currentProfile.value?.userId)
+
+	if (isError(response)) {
+		setSnackbarError({ text: handleErrorSnackbar(response) })
+	} else {
+		posts.value = response
+	}
+}
+
 watch(() => route.query.id, async (id) => {
 	await fetchProfile(id as string)
+	await fetchPosts()
 })
 
 onBeforeMount(async () => {
@@ -112,6 +131,7 @@ onBeforeMount(async () => {
 
 	const id = route.query.id
 	await fetchProfile(id as string)
+	await fetchPosts()
 })
 </script>
 
@@ -119,8 +139,10 @@ onBeforeMount(async () => {
 .profile {
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
 
-  .profile-content {
+  &__content {
     display: flex;
     gap: 20px;
   }

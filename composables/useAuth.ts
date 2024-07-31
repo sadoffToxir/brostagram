@@ -30,8 +30,10 @@ export const useAuth = () => {
 	}
 
 	const handleLogout = () => {
+		const { setProfile } = useUser()
 		useCookie<Cookie | null>(AUTH_ACCESS_COOKIE).value = null
 		useCookie<Cookie | null>(AUTH_REFRESH_COOKIE).value = null
+		setProfile(null)
 
 		navigateTo('/authentication')
 	}
